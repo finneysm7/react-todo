@@ -1,12 +1,17 @@
 var React = require('react');
 
-var TodoForm = React.createClass({
+var AddTodo = React.createClass({
   onSubmit: function (e) {
     e.preventDefault();
     var strTask = this.refs.todoText.value;
 
-    this.refs.todoText.value = '';
-    this.props.onSetTask(strTask);
+    if (strTask.length > 0) {
+      this.refs.todoText.value = '';
+      this.props.onSetTask(strTask);
+    } else {
+      this.refs.todoText.focus();
+    }
+
   },
   render: function () {
     return (
@@ -20,4 +25,4 @@ var TodoForm = React.createClass({
   }
 });
 
-module.exports = TodoForm;
+module.exports = AddTodo;
